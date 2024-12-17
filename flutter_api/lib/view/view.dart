@@ -28,7 +28,8 @@ class _UserListScreenState extends State<UserListScreen> {
         backgroundColor: Colors.indigoAccent,
         title: const Text(
           "Contactos",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         actions: [
@@ -37,7 +38,8 @@ class _UserListScreenState extends State<UserListScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CreateUserScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const CreateUserScreen()),
               );
             },
           ),
@@ -65,11 +67,13 @@ class _UserListScreenState extends State<UserListScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.error_outline, color: Colors.redAccent, size: 50),
+                    Icon(Icons.error_outline,
+                        color: Colors.redAccent, size: 50),
                     const SizedBox(height: 10),
                     Text(
                       "Error: ${snapshot.error}",
-                      style: const TextStyle(fontSize: 20, color: Colors.redAccent),
+                      style: const TextStyle(
+                          fontSize: 20, color: Colors.redAccent),
                     ),
                   ],
                 ),
@@ -79,7 +83,8 @@ class _UserListScreenState extends State<UserListScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.person_off, color: Colors.grey.shade400, size: 50),
+                    Icon(Icons.person_off,
+                        color: Colors.grey.shade400, size: 50),
                     const SizedBox(height: 10),
                     const Text(
                       "No hay contactos disponibles.",
@@ -97,7 +102,8 @@ class _UserListScreenState extends State<UserListScreen> {
                     crossAxisCount: 2, // Número de columnas
                     crossAxisSpacing: 30, // Espacio horizontal entre cuadros
                     mainAxisSpacing: 30, // Espacio vertical entre cuadros
-                    childAspectRatio: 1, // Relación ancho-alto de los cuadros
+                    childAspectRatio:
+                        0.78, // Reducir la relación ancho-alto (más altura)
                   ),
                   itemCount: usuarios.length,
                   itemBuilder: (context, index) {
@@ -124,23 +130,28 @@ class _UserListScreenState extends State<UserListScreen> {
                             backgroundColor: Colors.grey.shade200,
                           ),
                           const SizedBox(height: 10),
-                          Text(
-                            "${usuario.firstName} ${usuario.lastName}",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                          Expanded(
+                            // Asegura que el contenido se ajuste correctamente
+                            child: Text(
+                              "${usuario.firstName} ${usuario.lastName}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 5),
-                          Text(
-                            usuario.email,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey.shade600,
+                          Expanded(
+                            child: Text(
+                              usuario.email,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey.shade600,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 10),
                           ElevatedButton(
@@ -148,7 +159,8 @@ class _UserListScreenState extends State<UserListScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => UpdateUserScreen(userId: usuario.id),
+                                  builder: (context) =>
+                                      UpdateUserScreen(userId: usuario.id),
                                 ),
                               );
                             },
