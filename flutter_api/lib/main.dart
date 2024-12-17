@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/view/view.dart';
+import 'package:flutter_api/view/welcomeScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Datos API',
       theme: ThemeData(primarySwatch: Colors.blue),
       home:
-          UserListScreen(),
+          const PantallaLogin(),
     );
   }
 }
